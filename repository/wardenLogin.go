@@ -17,14 +17,14 @@ func NewWardenLoginRepository(db *sql.DB) *WardenLoginRepository {
 		db: db,
 	}
 }
-func (w *WardenLoginRepository) SubmitWardenRegisterForm(data []models.WardenRegister) error {
+func (w *WardenLoginRepository) SubmitWardenRegisterForm(data models.WardenRegister) error {
 	query := database.NewWardenQuery(w.db)
 	err := query.CreateWardenTable()
 	if err != nil {
 		log.Printf("Failed to create warden table: %v", err)
 		return err
 	}
-	err = query.SubmitWardenRegisterForm(data[0])
+	err = query.SubmitWardenRegisterForm(data)
 	if err != nil {
 		log.Printf("Failed to submit warden register form : %v", err)
 		return err
@@ -32,9 +32,9 @@ func (w *WardenLoginRepository) SubmitWardenRegisterForm(data []models.WardenReg
 	return nil
 }
 
-func (w *WardenLoginRepository) SubmitWardenLoginForm(data []models.WardenLogin) error {
+func (w *WardenLoginRepository) SubmitWardenLoginForm(data models.WardenLogin) error {
 	query := database.NewWardenQuery(w.db)
-	_, err := query.SubmitWardenLoginForm(data[0].Email, data[0].Password)
+	_, err := query.SubmitWardenLoginForm(data.Email, data.Password)
 	if err != nil {
 		log.Printf("Failed to Login: %v", err)
 		return err

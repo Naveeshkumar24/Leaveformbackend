@@ -60,8 +60,8 @@ func (f *FacultyQuery) CreateFacultyTable() error {
 }
 
 func (f *FacultyQuery) SubmitFacultyRegisterForm(facultyRegister models.FacultyRegister) error {
-	NewFacultyId := uuid.New().String()
-	facultyRegister.FacultyId = NewFacultyId
+	NewFacultyUuId := uuid.New().String()
+	facultyRegister.FacultyUuId = NewFacultyUuId
 	_, err := f.db.Exec("INSERT INTO facultyregister (facultyuuid,facultyid,name,email,password,department,phone,designation,qualification,experience) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)",
 		facultyRegister.FacultyUuId, facultyRegister.FacultyId, facultyRegister.Name, facultyRegister.Email, facultyRegister.Password, facultyRegister.Department, facultyRegister.Phone, facultyRegister.Designation, facultyRegister.Qualification, facultyRegister.Experience)
 	if err != nil {

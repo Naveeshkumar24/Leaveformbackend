@@ -20,7 +20,7 @@ func NewStudentLoginHandler(studentLogin repository.StudentLoginRepository) *Stu
 	}
 }
 func (b *StudentLoginHandler) SubmitStudentRegisterForm(w http.ResponseWriter, r *http.Request) {
-	var data []models.Studentregister
+	var data models.Studentregister
 	err := json.NewDecoder(r.Body).Decode(&data)
 	if err != nil {
 		log.Printf("Failed to decode student register form: %v", err)
@@ -39,7 +39,7 @@ func (b *StudentLoginHandler) SubmitStudentRegisterForm(w http.ResponseWriter, r
 	json.NewEncoder(w).Encode(map[string]string{"message": "student register form submitted"})
 }
 func (b *StudentLoginHandler) SubmitStudentLogin(w http.ResponseWriter, r *http.Request) {
-	var data []models.StudentLogin
+	var data models.StudentLogin
 	err := utils.Decode(r, &data)
 	if err != nil {
 		log.Printf("Failed to decode student login form: %v", err)

@@ -19,7 +19,7 @@ func NewWardenLoginHandler(repo repository.WardenLoginRepository) *wardenLoginHa
 	}
 }
 func (wl *wardenLoginHandler) SubmitWardenRegisterForm(w http.ResponseWriter, r *http.Request) {
-	var data []models.WardenRegister
+	var data models.WardenRegister
 	err := json.NewDecoder(r.Body).Decode(&data)
 	if err != nil {
 		http.Error(w, "Failed to decode request body", http.StatusBadRequest)
@@ -34,7 +34,7 @@ func (wl *wardenLoginHandler) SubmitWardenRegisterForm(w http.ResponseWriter, r 
 	json.NewEncoder(w).Encode(map[string]string{"message": "Data submitted successfully"})
 }
 func (wl *wardenLoginHandler) SubmitWardenLoginForm(w http.ResponseWriter, r *http.Request) {
-	var data []models.WardenLogin
+	var data models.WardenLogin
 	err := json.NewDecoder(r.Body).Decode(&data)
 	if err != nil {
 		http.Error(w, "Failed to decode request body", http.StatusBadRequest)

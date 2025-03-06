@@ -16,6 +16,6 @@ type WardenRegister struct {
 	Qualification string `json:"qualification"`
 }
 type WardenRegisterInterface interface {
-	SubmitWardenRegisterForm([]WardenRegister) error
-	SubmitWardenLoginForm([]WardenLogin) error
+	SubmitWardenRegiterForm(WardenRegister) error
+	SubmitWardenLoginForm(WardenLogin) error
 }

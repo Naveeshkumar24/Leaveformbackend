@@ -19,6 +19,6 @@ type FacultyRegister struct {
 	Experience    string `json:"experience"`
 }
 type FacultyRegisterInterface interface {
-	SubmitFacultyRegisterForm([]FacultyRegister) error
-	SubmitFacultyLoginForm([]FacultyLogin) error
+	SubmitFacultyRegisterForm(FacultyRegister) error
+	SubmitFacultyLoginForm(FacultyLogin) error
 }

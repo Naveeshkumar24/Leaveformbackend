@@ -17,18 +17,18 @@ func NewStudentLoginRepository(db *sql.DB) *StudentLoginRepository {
 		db: db,
 	}
 }
-func (s *StudentLoginRepository) SubmitStudentRegisterForm(data []models.Studentregister) error {
+func (s *StudentLoginRepository) SubmitStudentRegisterForm(data models.Studentregister) error {
 	query := database.NewStudentQuery(s.db)
-	err := query.SubmitStudentRegister(data[0])
+	err := query.SubmitStudentRegister(data)
 	if err != nil {
 		log.Printf("Failed to submit student register form : %v", err)
 		return err
 	}
 	return nil
 }
-func (s *StudentLoginRepository) SubmitStudentLogin(data []models.StudentLogin) error {
+func (s *StudentLoginRepository) SubmitStudentLogin(data models.StudentLogin) error {
 	query := database.NewStudentQuery((s.db))
-	_, err := query.SubmitStudentLogin(data[0].USN, data[0].Password)
+	_, err := query.SubmitStudentLogin(data.USN, data.Password)
 	if err != nil {
 		log.Printf("Failed to Login: %v", err)
 		return err

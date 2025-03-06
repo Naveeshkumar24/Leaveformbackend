@@ -19,6 +19,6 @@ type Studentregister struct {
 }
 
 type StudentregisterInterface interface {
-	SubmitStudentRegisterForm([]Studentregister) error
-	Submitstudentloginform([]StudentLogin) error
+	SubmitStudentRegisterForm(Studentregister) error
+	Submitstudentloginform(StudentLogin) error
 }

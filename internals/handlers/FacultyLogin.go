@@ -19,7 +19,7 @@ func NewFacultyLoginHandler(repo repository.FacultyLoginRepository) *FacultyLogi
 	}
 }
 func (b *FacultyLoginHandler) SubmitFacultyRegisterForm(w http.ResponseWriter, r *http.Request) {
-	var data []models.FacultyRegister
+	var data models.FacultyRegister
 	err := utils.Decode(r, &data)
 	if err != nil {
 		http.Error(w, "Failed to decode request body", http.StatusBadRequest)
@@ -34,7 +34,7 @@ func (b *FacultyLoginHandler) SubmitFacultyRegisterForm(w http.ResponseWriter, r
 	utils.Encode(w, map[string]string{"message": "Data submitted successfully"})
 }
 func (b *FacultyLoginHandler) SubmitFacultyLoginForm(w http.ResponseWriter, r *http.Request) {
-	var data []models.FacultyLogin
+	var data models.FacultyLogin
 	err := json.NewDecoder(r.Body).Decode(&data)
 	if err != nil {
 		http.Error(w, "Failed to decode request body", http.StatusBadRequest)
